@@ -1,7 +1,15 @@
 
 public class Celda {
 
-	//soy una celda
+	 private boolean tangible;
+
+	public boolean isTangible() {
+		return tangible;
+	}
+
+	public void setTangible(boolean tangible) {
+		this.tangible = tangible;
+	}
 	
-	//juego súper bacano que nos va a quedar sii
+	
 }
