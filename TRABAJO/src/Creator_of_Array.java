@@ -4,7 +4,6 @@ public class Creator_of_Array {
 	public void action(Celda[][] laberinto) { //Llamo al argumento igual al array original por simplicidad
 		
 		int level_size = 10;
-		Prime_Aceptator pa = new Prime_Aceptator();
 		
 		//System.out.println(pa.loop1(0));
 		
