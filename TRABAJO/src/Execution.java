@@ -22,7 +22,7 @@ public class Execution {
 		//creo el entorno
 		Celda[][] laberinto = new Celda[level_size][level_size];
 		
-		//especifico las caracterÌsticas del entorno
+		//especifico las caracter√≠sticas del entorno
 		Creator_of_Array coa = new Creator_of_Array();
 		coa.action(laberinto, pl.level);
 		
@@ -59,7 +59,7 @@ public class Execution {
 			 //Dibujar mapa
 			 ml.action(laberinto, pl.getX(), pl.getY(),pl.getll());
 			
-			 //Evalua si llego a la posicion de la llave oculta
+			 //Evalua si lleg√≥ a la posici√≥n de la llave oculta
 			 if(pl.getX()== llave.getX() && pl.getY() == llave.getY()) {
 			    pl.setll(1);
 			    if(!tieneLlave)
@@ -67,7 +67,7 @@ public class Execution {
 			    tieneLlave = true;
 			 }
 			 
-			//Evalua si activÛ alguna trampa
+			//Evalua si activ√≥ alguna trampa
 			 if(pl.getX()== trampa1.getX() && pl.getY() == trampa1.getY()) {
 				 if(trampa1.getActive())
 			    	{System.out.println("\t "+ entradaTeclado + " ha activado una trampa!");}
@@ -89,7 +89,7 @@ public class Execution {
 			     llave.setY(pl.getY());
 			 }
 			 
-			 //evalua si se llevo la llave hasta la salida
+			 //evalua si se llev√≥ la llave hasta la salida
 			 //en caso de que el jugador  no llegue con la llave no gana
 			 if(llave.getX()==9 && llave.getY()==9) {
 				 if (pl.level == 2) {
@@ -115,12 +115,11 @@ public class Execution {
 				 }
 			}
 			 
-			//presentar opciÛn al user
+			//presentar opci√≥n al user
 			int motion;
-			
 			motion = ord.action();
 			
-			//guardar posiciÛn actual del jugador
+			//guardar posici√≥n actual del jugador
 			int tempx=pl.getX();
 			int tempy=pl.getY();
 			
