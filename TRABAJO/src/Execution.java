@@ -59,7 +59,7 @@ public class Execution {
 			 //Dibujar mapa
 			 ml.action(laberinto, pl.getX(), pl.getY(),pl.getll());
 			
-			 //Evalua si llego a la posicion de la llave oculta
+			 //Evalua si llegó a la posicion de la llave oculta
 			 if(pl.getX()== llave.getX() && pl.getY() == llave.getY()) {
 			    pl.setll(1);
 			    if(!tieneLlave)
@@ -89,7 +89,7 @@ public class Execution {
 			     llave.setY(pl.getY());
 			 }
 			 
-			 //evalua si se llevo la llave hasta la salida
+			 //evalua si se llevó la llave hasta la salida
 			 //en caso de que el jugador  no llegue con la llave no gana
 			 if(llave.getX()==9 && llave.getY()==9) {
 				 if (pl.level == 2) {

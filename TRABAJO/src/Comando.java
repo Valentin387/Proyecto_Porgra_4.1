@@ -3,10 +3,10 @@ import java.util.Scanner;
 public class Comando {
 	
 	public int action() {
-		//System.out.println("\n PRESS ENTER ");
+		
 		@SuppressWarnings("resource")
 		Scanner scan = new Scanner(System.in);
-		//scan.nextLine(); //limpiar el buffer del teclado por si acaso
+
 		
 		System.out.println("LEFT(A); DOWN(S); UP(W); RIGHT(D) ");
 		System.out.print("OPTION = ");
@@ -23,7 +23,7 @@ public class Comando {
     		{key = 0;}
         if(eTeclado == 's')
     		{key = 1;}
-        if(eTeclado == 'd')
+        if(eTeclado == 'd') 
     		{key = 3;}
   
 
