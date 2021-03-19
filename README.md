@@ -2,20 +2,21 @@
 We are not gonna die tonight
 
 
-//nota Juan Diego 17 marzo:
-compañeros he hecho algunos ajustes previos a los que Valentin había realizado pero presenté problemas con eclipse
-así que les pido por favor abran los archivos como texto y reemplacen el código que tenian por este actualizado
-los ajustes son:
+INSTRUCCIONES DEL JUEGO:
 
-*forma en que se imprime el tablero para una presentacion mas amigable
+El laberinto es un arreglo bidimensional, el jugaodr aparece en la posición 0;0 al principio
+(esquina superior izquierda), la salida está en la esquina inferior derecha.
 
-*se agregó la clase llave y se modificaron varias clases que tenian relacion con esta 
+La llave está oculta en el tablero y el jugador debe vagar por este hasta que la encuentre, 
+el jugador está representado por [@] pero si cuenta con la llave tiene la forma <@>
 
-*la llave está oculta en el tablero y el jugador debe vagar por este hasta que la encuentre, esta estará representada
-por el símbolo '>' que solo aparecerá despues de que el usuario pase por la casilla donde se encuentra (fila = 1 , columna  = 8)
+Si el jugador llega a la salida sin la llave no podrá ganar, debe ir a buscarla y volver a la salida.
 
-*si el jugador llega a la salida sin la llave no podrá ganar, debe ir a buscarla y volver a la salida
+Cuidado, en algunas celdas habrán trampas escondidas, su lugar cambiará cada vez que se cree el nivel,
+al caer en ellas sale un mensaje de que han sido activadas y el jugador es teletransportado a una 
+ubicación aleatoria dentro del laberinto. 
 
-*se agregó la funcion que pide el nombre del jugador y este nombre aparecerá en el mensaje de 'jugador' has ganado!
+Por el momento es un juego por consola, por lo tanto para moverse con AWSD se debe poner la letra
+en minúscula y luego oprimir Intro.
 
-cualquier sugerencia o inquietud estaré atento a el grupo de whatsapp.
+
