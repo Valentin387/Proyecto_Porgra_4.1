@@ -1,7 +1,7 @@
 
 public class Celda {
 
-	 private boolean tangible;
+	private boolean tangible;
 
 	public boolean isTangible() {
 		return tangible;
