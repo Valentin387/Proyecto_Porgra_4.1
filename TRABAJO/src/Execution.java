@@ -1,5 +1,7 @@
 
 import java.util.Scanner;
+import javax.swing.JFrame;
+
 public class Execution {
  
 	
@@ -22,7 +24,7 @@ public class Execution {
 		//creo el entorno
 		Celda[][] laberinto = new Celda[level_size][level_size];
 		
-		//especifico las caracter√≠sticas del entorno
+		//especifico las caracterÌsticas del entorno
 		Creator_of_Array coa = new Creator_of_Array();
 		coa.action(laberinto, pl.level);
 		
@@ -54,12 +56,20 @@ public class Execution {
 		boolean terminar=false;
 		boolean tieneLlave = false;
 		
+		//creo el frame
+		JFrame app = new JFrame("Noob Runner");
+		app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		app.setSize(550,550);
+		app.setVisible(true);
+		
+		
 		while(!terminar) {
 			
 			 //Dibujar mapa
-			 ml.action(laberinto, pl.getX(), pl.getY(),pl.getll());
+			ml.SuperSetter(app,laberinto, pl.getX(), pl.getY(),pl.getll()); 
+			app.add(ml);
 			
-			 //Evalua si lleg√≥ a la posici√≥n de la llave oculta
+			 //Evalua si llegÛ a la posicion de la llave oculta
 			 if(pl.getX()== llave.getX() && pl.getY() == llave.getY()) {
 			    pl.setll(1);
 			    if(!tieneLlave)
@@ -67,7 +77,7 @@ public class Execution {
 			    tieneLlave = true;
 			 }
 			 
-			//Evalua si activ√≥ alguna trampa
+			//Evalua si activÛ alguna trampa
 			 if(pl.getX()== trampa1.getX() && pl.getY() == trampa1.getY()) {
 				 if(trampa1.getActive())
 			    	{System.out.println("\t "+ entradaTeclado + " ha activado una trampa!");}
@@ -89,7 +99,7 @@ public class Execution {
 			     llave.setY(pl.getY());
 			 }
 			 
-			 //evalua si se llev√≥ la llave hasta la salida
+			 //evalua si se llevÛ la llave hasta la salida
 			 //en caso de que el jugador  no llegue con la llave no gana
 			 if(llave.getX()==9 && llave.getY()==9) {
 				 if (pl.level == 2) {
@@ -115,11 +125,12 @@ public class Execution {
 				 }
 			}
 			 
-			//presentar opci√≥n al user
+			//presentar opciÛn al user
 			int motion;
+			
 			motion = ord.action();
 			
-			//guardar posici√≥n actual del jugador
+			//guardar posiciÛn actual del jugador
 			int tempx=pl.getX();
 			int tempy=pl.getY();
 			
