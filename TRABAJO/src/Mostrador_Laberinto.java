@@ -1,56 +1,68 @@
+import java.awt.Color;
+import java.awt.Graphics;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class Mostrador_Laberinto{
+public class Mostrador_Laberinto extends JPanel{
 	
-	//Celda[][] lb;
+	private JFrame app;
+	private Celda laberinto[][];
+	private int jx;
+	private int jy;
+	private int ll;
 	
-	public void action(JFrame app, Celda laberinto[][] , int jx, int jy, int ll) {
+	public void SuperSetter(JFrame app, Celda laberinto[][], int jx, int jy, int ll) {
+		this.app=app;
+		this.laberinto = laberinto;
+		this.jx=jx;
+		this.jy=jy;
+		this.ll=ll;
+	}
+	
+	@Override
+	public void paintComponent(Graphics g) {
+		repaint();
+		
+		super.paintComponent(g);
+		
 		int filas;
 		int columnas;
 		int level_size = 10;
 		int horizontal_cursor=0;
 		int vertical_cursor=0;
+		int figure_dimension=45;
 		
-		Pintor pin = new Pintor();
-		
-		for(filas=0, vertical_cursor=0; filas<5 ;filas++, vertical_cursor+=45) {
-			for(columnas=0,horizontal_cursor=0; columnas < 5; columnas++,horizontal_cursor+=45) {
+		for(filas=0, vertical_cursor=0; filas<level_size ;filas++, vertical_cursor+=50) {
+			for(columnas=0,horizontal_cursor=0; columnas <level_size; columnas++,horizontal_cursor+=50) {
 				
 				if(filas==jy && columnas==jx) {
         				    if(ll == 1){//si tiene la llave se imprime de una forma
-      
-        				    	pin.SuperSetter(0,horizontal_cursor,vertical_cursor);  
-        				    	//app.add(pin);
+        				    	g.setColor(Color.YELLOW); //YELLOW
+        				    	g.fillOval(horizontal_cursor, vertical_cursor, figure_dimension, figure_dimension);
+        				    
                 			}else{//si no la tiene se imprime de otra
-
-                				pin.SuperSetter(1,horizontal_cursor,vertical_cursor);  
-        				    	//app.add(pin);
+                				g.setColor(Color.BLUE); //BLUE
+        				    	g.fillOval(horizontal_cursor, vertical_cursor, figure_dimension, figure_dimension);
+                			  	
         				}//el jugador está representado por la arroba 
 				}else if(laberinto[filas][columnas].isTangible()== true) {
-
-					pin.SuperSetter(2,horizontal_cursor,vertical_cursor);  
-			    	//app.add(pin); //tangible = muro;
+					g.setColor(Color.BLACK); //BLACK
+			    	g.fillRect(horizontal_cursor, vertical_cursor, figure_dimension, figure_dimension);
+					 
+			    	 //tangible = muro;
 				}else{
-		
-					pin.SuperSetter(3,horizontal_cursor,vertical_cursor);   
-			    	//app.add(pin); //(in)tangible = (No)muro
+					g.setColor(Color.WHITE); //WHITE
+			    	g.fillRect(horizontal_cursor, vertical_cursor, figure_dimension, figure_dimension);
+				   
+			    	 //(in)tangible = (No)muro
 				}
 			}
-			System.out.print("\n");
+			
 		}
-		
-		app.add(pin); 
-		
-		System.out.println("\nestá en " + jy + " ; " + jx );
-		if(ll == 0)
-			{System.out.print("llave = " + "NO" + "\n\n");}
-		else
-			{System.out.print("llave = " + "SI" + "\n\n");}
 		
 		
 	}
-	
+
 	
 		
 }

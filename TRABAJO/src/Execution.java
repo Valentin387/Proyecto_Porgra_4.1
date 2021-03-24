@@ -59,14 +59,15 @@ public class Execution {
 		//creo el frame
 		JFrame app = new JFrame("Noob Runner");
 		app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		app.setSize(500,500);
+		app.setSize(550,550);
 		app.setVisible(true);
 		
 		
 		while(!terminar) {
 			
 			 //Dibujar mapa
-			 ml.action(app,laberinto, pl.getX(), pl.getY(),pl.getll());
+			ml.SuperSetter(app,laberinto, pl.getX(), pl.getY(),pl.getll()); 
+			app.add(ml);
 			
 			 //Evalua si llegó a la posicion de la llave oculta
 			 if(pl.getX()== llave.getX() && pl.getY() == llave.getY()) {
