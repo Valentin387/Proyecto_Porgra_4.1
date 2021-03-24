@@ -1,5 +1,7 @@
 
 import java.util.Scanner;
+import javax.swing.JFrame;
+
 public class Execution {
  
 	
@@ -54,10 +56,17 @@ public class Execution {
 		boolean terminar=false;
 		boolean tieneLlave = false;
 		
+		//creo el frame
+		JFrame app = new JFrame("Noob Runner");
+		app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		app.setSize(500,500);
+		app.setVisible(true);
+		
+		
 		while(!terminar) {
 			
 			 //Dibujar mapa
-			 ml.action(laberinto, pl.getX(), pl.getY(),pl.getll());
+			 ml.action(app,laberinto, pl.getX(), pl.getY(),pl.getll());
 			
 			 //Evalua si llegó a la posicion de la llave oculta
 			 if(pl.getX()== llave.getX() && pl.getY() == llave.getY()) {
