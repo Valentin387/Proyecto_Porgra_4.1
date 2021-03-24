@@ -5,15 +5,24 @@ import javax.swing.JPanel;
 
 public class Mostrador_Laberinto extends JPanel{
 	
-	private JFrame app;
-	private Celda laberinto[][];
+	
+	private Celda laberinto[][]=new Celda[10][10];
 	private int jx;
 	private int jy;
 	private int ll;
 	
-	public void SuperSetter(JFrame app, Celda laberinto[][], int jx, int jy, int ll) {
-		this.app=app;
-		this.laberinto = laberinto;
+	public void getArrayOnce(Celda laberinto[][]) {
+		for(int lines=0; lines<10; lines++) {
+			for(int col=0; col<10; col++) {
+				this.laberinto[lines][col]= new Celda();
+				this.laberinto[lines][col]= laberinto[lines][col];
+			}
+		}
+	}
+	
+	public void SuperSetter(int jx, int jy, int ll) {
+		
+		//this.laberinto = laberinto;
 		this.jx=jx;
 		this.jy=jy;
 		this.ll=ll;

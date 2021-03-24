@@ -49,7 +49,7 @@ public class Execution {
 		
 		//creo objeto tipo mostrador
 		Mostrador_Laberinto ml = new Mostrador_Laberinto();
-		
+		ml.getArrayOnce(laberinto);
 		
 		
 		//bandera
@@ -66,7 +66,7 @@ public class Execution {
 		while(!terminar) {
 			
 			 //Dibujar mapa
-			ml.SuperSetter(app,laberinto, pl.getX(), pl.getY(),pl.getll()); 
+			ml.SuperSetter(pl.getX(), pl.getY(),pl.getll()); 
 			app.add(ml);
 			
 			 //Evalua si llegó a la posicion de la llave oculta
@@ -111,6 +111,7 @@ public class Execution {
 					 tieneLlave = false;
 					 pl.level = pl.level + 1;
 					 coa.action(laberinto, pl.level);
+					 	ml.getArrayOnce(laberinto);
 					 trampa1.set(laberinto);
 					 trampa1.setActive(true);
 					 trampa2.set(laberinto);
