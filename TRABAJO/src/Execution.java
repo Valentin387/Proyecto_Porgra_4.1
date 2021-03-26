@@ -5,8 +5,12 @@ import javax.swing.JFrame;
 public class Execution {
  
 	
-	public void action() {
+	public void action() throws InterruptedException {
+		
 		int level_size = 10;
+
+		//creo la pestaña de mensaje
+		Mensaje m = new Mensaje();
 		
 		//creo al jugador
 				Jugador pl = new Jugador(0,0);
@@ -14,9 +18,6 @@ public class Execution {
                 String entradaTeclado = "";
                 Scanner entradaEscaner = new Scanner (System.in);
                 entradaTeclado = entradaEscaner.nextLine ();
-                for(int i=0;i<20;i++) {
-    				System.out.println("\n");
-    			}
 		
 		//selecciono el nivel
 		pl.level = 1;
@@ -43,21 +44,28 @@ public class Execution {
 		 if(pl.level == 2) 
 		 	{llave.setX(7);
 			 llave.setY(6);}
+		 if(pl.level == 3)
+			 {llave.setX(0);
+			 llave.setY(7);}
                 
 		//creo objeto tipo comando, para recibir comandos AWSD
 		Comando ord = new Comando();
 		
 		//creo objeto tipo mostrador
 		Mostrador_Laberinto ml = new Mostrador_Laberinto();
-		
+		ml.getArrayOnce(laberinto);
 		
 		
 		//bandera
-		boolean terminar=false;
+		boolean terminar = false;
 		boolean tieneLlave = false;
+		boolean advertencia = true;
+		
+		KeyListenerTester k = new KeyListenerTester("test");
 		
 		//creo el frame
 		JFrame app = new JFrame("Noob Runner");
+		app.addKeyListener(k);
 		app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		app.setSize(550,550);
 		app.setVisible(true);
@@ -66,7 +74,8 @@ public class Execution {
 		while(!terminar) {
 			
 			 //Dibujar mapa
-			ml.SuperSetter(app,laberinto, pl.getX(), pl.getY(),pl.getll()); 
+			ml.SuperSetter(pl.getX(), pl.getY(),pl.getll()); 
+			ml.repaint();
 			app.add(ml);
 			
 			 //Evalua si llegó a la posicion de la llave oculta
@@ -80,14 +89,16 @@ public class Execution {
 			//Evalua si activó alguna trampa
 			 if(pl.getX()== trampa1.getX() && pl.getY() == trampa1.getY()) {
 				 if(trampa1.getActive())
-			    	{System.out.println("\t "+ entradaTeclado + " ha activado una trampa!");}
+			    	{System.out.println("\t "+ entradaTeclado + " ha activado una trampa!");
+			    	 ml.trampa = true;}
 			     trampa1.activate(laberinto,pl);
 			    
 			 }
 			 
 			 if(pl.getX()== trampa2.getX() && pl.getY() == trampa2.getY()) {
 				 if(trampa2.getActive())
-			    	{System.out.println("\t "+ entradaTeclado + " ha activado una trampa!");}
+			    	{System.out.println("\t "+ entradaTeclado + " ha activado una trampa!");
+			    	 ml.trampa = true;}
 			     trampa2.activate(laberinto,pl);
 			 }
 		 
@@ -102,15 +113,18 @@ public class Execution {
 			 //evalua si se llevó la llave hasta la salida
 			 //en caso de que el jugador  no llegue con la llave no gana
 			 if(llave.getX()==9 && llave.getY()==9) {
-				 if (pl.level == 2) {
+				 if (pl.level == 3) {
 					 System.out.println("\t "+ entradaTeclado + " ha ganado!");
+					 m.gana(entradaTeclado);
 					 System.exit(0);
 				 }
 				 else {
 					 System.out.println("\t "+ entradaTeclado + " ha completado el piso " + pl.level + ".");
+					 m.gana(entradaTeclado);
 					 tieneLlave = false;
 					 pl.level = pl.level + 1;
 					 coa.action(laberinto, pl.level);
+					 	ml.getArrayOnce(laberinto);
 					 trampa1.set(laberinto);
 					 trampa1.setActive(true);
 					 trampa2.set(laberinto);
@@ -122,13 +136,23 @@ public class Execution {
 						 llave.setX(7);
 						 llave.setY(6);
 					 }
+					 if(pl.level == 3) {
+						 llave.setX(0);
+						 llave.setY(7);
+					 }
 				 }
 			}
 			 
 			//presentar opción al user
 			int motion;
 			
+			
 			motion = ord.action();
+			
+			if(pl.getX()== 9 && pl.getY() == 9 && advertencia) {
+				m.notiene(entradaTeclado);
+				advertencia = false;
+			}
 			
 			//guardar posición actual del jugador
 			int tempx=pl.getX();
@@ -158,16 +182,18 @@ public class Execution {
 				
 			}
 			
+			k.temp= 100;
 			
 
-			for(int i=0;i<20;i++) {
-				System.out.println("\n");
-			}
+			//for(int i=0;i<20;i++) {
+				//System.out.println("\n");
+			//}
 			
+			Thread.sleep(50);
+			ml.trampa = false;
 			
 		}
 
 	}
-	
 
 }

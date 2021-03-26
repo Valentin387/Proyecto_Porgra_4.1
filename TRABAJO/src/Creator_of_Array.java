@@ -118,6 +118,60 @@ public class Creator_of_Array {
 			laberinto[1][8].setTangible(false);
 
 		}
+		if(level == 3)
+		{
+			//camino para ganar
+			laberinto[0][0].setTangible(false);
+			laberinto[0][1].setTangible(false);
+			laberinto[0][2].setTangible(false);
+			laberinto[1][2].setTangible(false);
+			laberinto[1][3].setTangible(false);
+			laberinto[1][4].setTangible(false);
+			laberinto[1][5].setTangible(false);
+			laberinto[0][5].setTangible(false);
+			laberinto[0][6].setTangible(false);
+			laberinto[0][7].setTangible(false);
+			laberinto[0][8].setTangible(false);
+			laberinto[1][8].setTangible(false);
+			laberinto[2][8].setTangible(false);
+			laberinto[3][8].setTangible(false);
+			laberinto[4][8].setTangible(false);
+			laberinto[4][7].setTangible(false);
+			laberinto[4][6].setTangible(false);
+			laberinto[4][5].setTangible(false);
+			laberinto[5][5].setTangible(false);
+			laberinto[6][5].setTangible(false);
+			laberinto[7][5].setTangible(false);
+			laberinto[8][5].setTangible(false);
+			laberinto[9][5].setTangible(false);
+			laberinto[9][6].setTangible(false);
+			laberinto[9][7].setTangible(false);
+			laberinto[9][8].setTangible(false);
+			laberinto[9][9].setTangible(false);
+			
+			
+			//caminos falsos
+			laberinto[2][2].setTangible(false);
+			laberinto[3][2].setTangible(false);
+			laberinto[4][2].setTangible(false);
+			laberinto[5][2].setTangible(false);
+			laberinto[5][1].setTangible(false);
+			laberinto[5][0].setTangible(false);
+			laberinto[6][2].setTangible(false);
+			laberinto[7][2].setTangible(false);
+			laberinto[7][1].setTangible(false);
+			laberinto[7][0].setTangible(false);
+			laberinto[7][3].setTangible(false);
+			laberinto[8][3].setTangible(false);
+			laberinto[9][3].setTangible(false);
+			laberinto[9][4].setTangible(false);
+			
+			laberinto[5][7].setTangible(false);
+			laberinto[6][7].setTangible(false);
+			laberinto[7][7].setTangible(false);
+						
+		}
 	}
 
 }
+
