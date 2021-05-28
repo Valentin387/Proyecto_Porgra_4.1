@@ -19,4 +19,5 @@ ubicación aleatoria dentro del laberinto.
 Por el momento es un juego por consola, por lo tanto para moverse con AWSD se debe poner la letra
 en minúscula y luego oprimir Intro.
 
-
+UPDATE: 
+NOW IT IS MADE WITH SWING AND YOU MOVE WITH THE ARROW KEYS
